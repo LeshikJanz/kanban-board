@@ -1,8 +1,9 @@
 import React from "react"
 import { connect } from "react-redux"
 import "./styles.scss"
-import { createItemRequested } from "./actions"
-import { fetchItemListsRequested } from "modules/Main/actions"
+import { fetchItemRequested } from "./actions"
+import { fetchItemListsRequested } from "../Main/actions"
+import { updateItemRequested } from "./actions"
 
 class CreateItem extends React.Component {
   state = {
@@ -15,11 +16,18 @@ class CreateItem extends React.Component {
     if (!this.props.itemLists.length) {
       this.props.fetchItemLists()
     }
+    if (this.props.match.params.id) {
+      this.props.fetchItem(this.props.match.params.id)
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({ ...nextProps.item })
   }
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.createItem(this.state, this.props.history)
+    this.props.updateItem(this.state, this.props.history)
   }
 
   handleChange = ({ target }) =>
@@ -54,9 +62,14 @@ class CreateItem extends React.Component {
               )
             }
           </select>
-          <button className="create" disabled={!(isNaN(title) && description && itemListId)}>
-            Create
-          </button>
+          <div className="editActions">
+            <button className="create" disabled={!(isNaN(title) && description && itemListId)}>
+              Update
+            </button>
+            <button className="delete">
+              Delete
+            </button>
+          </div>
         </form>
       </div>
     )
@@ -64,15 +77,17 @@ class CreateItem extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  itemLists: state.Board.lists
+  item: state.Item,
+  itemLists: state.Board.lists,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchItemLists: () => {
+  fetchItem: (itemId) =>
+    dispatch(fetchItemRequested(itemId)),
+  updateItem: (item, history) =>
+    dispatch(updateItemRequested({ item, history })),
+  fetchItemLists: () =>
     dispatch(fetchItemListsRequested())
-  },
-  createItem: (item, history) =>
-    dispatch(createItemRequested({ item, history }))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateItem)

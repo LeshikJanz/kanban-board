@@ -5,10 +5,19 @@ import {
   createItemRequested,
   createItemSucceded,
   createItemFailed,
+  fetchItemRequested,
+  fetchItemSucceded,
+  fetchItemFailed,
 } from "./actions"
 import { createItem } from "api/item"
 import urls from "urls"
 import { fetchItemListsRequested } from "modules/Main/actions"
+import { fetchItemById, updateItem } from "api/item"
+import {
+  updateItemRequested,
+  updateItemSucceded,
+  updateItemFailed
+} from "./actions"
 
 export function* createItemSaga({ payload }): Iterator<Object | Task> {
   try {
@@ -22,9 +31,31 @@ export function* createItemSaga({ payload }): Iterator<Object | Task> {
   }
 }
 
+export function* fetchItemSaga({ payload }): Iterator<Object | Task> {
+  try {
+    const item = yield fetchItemById(payload)
+    yield put(fetchItemSucceded(item))
+  } catch (error) {
+    yield put(fetchItemFailed(error))
+  }
+}
+
+export function* updateItemSaga({ payload }): Iterator<Object | Task> {
+  try {
+    const { item, history } = payload
+    const updatedItem = yield updateItem(item)
+    history.push(urls.index)
+    yield put(updateItemSucceded(updatedItem))
+  } catch (error) {
+    yield put(updateItemFailed(error))
+  }
+}
+
 export function* itemSaga() {
   yield [
     takeEvery(createItemRequested().type, createItemSaga),
+    takeEvery(fetchItemRequested().type, fetchItemSaga),
+    takeEvery(updateItemRequested().type, updateItemSaga),
   ]
 }
 

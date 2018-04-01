@@ -16,6 +16,7 @@ import Base from 'modules/Main/containers'
 import urls from './urls'
 import CreateItemList from "./modules/ItemList/CreateItemList"
 import CreateItem from "./modules/Item/CreateItem"
+import EditItem from "./modules/Item/EditItem"
 
 const store = createStore(reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
@@ -31,8 +32,9 @@ ReactDOM.render(
         <Wrapper>
           <Header/>
           <Route exact path={urls.index} component={Base}/>
-          <Route path={urls.list} component={CreateItemList}/>
-          <Route path={urls.item} component={CreateItem}/>
+          <Route exact path={urls.list} component={CreateItemList}/>
+          <Route exact path={urls.item} component={CreateItem}/>
+          <Route path={`${urls.item}/:id`} component={EditItem}/>
         </Wrapper>
       </Switch>
     </Router>

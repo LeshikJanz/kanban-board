@@ -5,6 +5,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import styled from 'styled-components'
 import { borderRadius, colors, grid } from '../constants'
+import { Link } from "react-router-dom"
+import urls from "urls"
 
 type Props = {
   item: Item,
@@ -14,6 +16,7 @@ type Props = {
 }
 
 const Container = styled.div`
+position: relative;
 border-radius: ${borderRadius}px;
 border: 1px solid grey;
 background-color: ${({ isDragging }) => (isDragging ? colors.green : colors.white)};
@@ -27,6 +30,9 @@ color: ${colors.black};
 &:hover {
   color: ${colors.black};
   text-decoration: none;
+  a {
+    display: block !important;
+  }
 }
 &:focus {
   outline: 2px solid ${colors.purple};
@@ -59,6 +65,14 @@ justify-content: flex-end;
 margin-top: 20px;
 `
 
+const Edit = styled(Link)`
+  display: none;
+  position: absolute;
+  right: 5px;
+  top: 0;
+  z-index: 10;
+`
+
 const getItemStyle = (draggableStyle, isDragging) => ({
   userSelect: 'none',
   margin: 4,
@@ -89,6 +103,9 @@ export default class QuoteItem extends React.PureComponent<Props> {
         {...provided.draggableProps}
         {...provided.dragHandleProps}
       >
+        <Edit to={`${urls.item}/${item.id}`}>
+          Edit
+        </Edit>
         <Content>
           <BlockQuote>{item.description}</BlockQuote>
           <Attribution>{item.title}</Attribution>

@@ -27,7 +27,7 @@ class CreateItemList extends React.Component {
             placeholder="*Should be a string"
             value={name}
             onChange={this.handleChange}/>
-          <button disabled={!isNaN(name)}>Create</button>
+          <button className="create" disabled={!isNaN(name)}>Create</button>
         </form>
       </div>
     )

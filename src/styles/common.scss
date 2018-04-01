@@ -38,6 +38,15 @@ button {
     background-color: gray;
     cursor: not-allowed;
   }
+
+  &.create {
+    max-width: 200px;
+  }
+
+  &.delete {
+    max-width: 200px;
+    background-color: firebrick;
+  }
 }
 
 input, textarea {
