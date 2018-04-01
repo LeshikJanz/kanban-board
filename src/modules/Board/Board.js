@@ -6,13 +6,14 @@ import type {
   DroppableProvided,
 } from 'react-beautiful-dnd'
 import React, { Component } from 'react'
-import styled, { injectGlobal } from 'styled-components'
+import styled from 'styled-components'
 import Column from './Column'
-import { colors } from './constants'
+import { connect } from 'react-redux'
 import reorder, { reorderQuoteMap } from './reorder'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 
 import type { QuoteMap } from '../types'
+import { updateItemsOrderRequested } from "./actions"
 
 const ParentContainer = styled.div`
   height: ${({ height }) => height};
@@ -38,7 +39,7 @@ type State = {
   autoFocusQuoteId: ?string,
 }
 
-export default class Board extends Component<Props, State> {
+class Board extends Component<Props, State> {
   state: State = {
     columns: this.props.initial,
     ordered: Object.keys(this.props.initial),
@@ -47,15 +48,6 @@ export default class Board extends Component<Props, State> {
 
   boardRef: ?HTMLElement
 
-  componentDidMount() {
-    // eslint-disable-next-line no-unused-expressions
-    injectGlobal`
-      body {
-        background: ${colors.blue.deep}
-      }
-    `
-  }
-
   onDragStart = (initial: DragStart) => {
     this.setState({
       autoFocusQuoteId: null,
@@ -63,7 +55,6 @@ export default class Board extends Component<Props, State> {
   }
 
   onDragEnd = (result: DropResult) => {
-    // dropped nowhere
     if (!result.destination) {
       return
     }
@@ -85,6 +76,13 @@ export default class Board extends Component<Props, State> {
 
       this.setState({
         ordered,
+      }, () => {
+        const sortedIds = this.state.ordered.reduce((result, listName) => ({
+          ...result,
+          [listName]: this.state.columns[listName]
+        }), {})
+        console.log("sortedIds")
+        console.log(sortedIds)
       })
 
       return
@@ -97,9 +95,17 @@ export default class Board extends Component<Props, State> {
     })
 
     this.setState({
-      columns: data.quoteMap,
-      autoFocusQuoteId: data.autoFocusQuoteId,
-    })
+        columns: data.quoteMap,
+        autoFocusQuoteId: data.autoFocusQuoteId,
+      }, () => {
+        const sortedIds = Object.keys(this.state.columns)
+          .reduce((result, itemListName) => ({
+            ...result,
+            [itemListName]: this.state.columns[itemListName].map(item => item.id)
+          }), {})
+        this.props.updateItemsOrder(sortedIds)
+      }
+    )
   }
 
   render() {
@@ -144,3 +150,14 @@ export default class Board extends Component<Props, State> {
     )
   }
 }
+
+const mapStateToProps = state => ({
+  itemLists: state.Board.lists
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  updateItemsOrder: (ids: string[]) =>
+    dispatch(updateItemsOrderRequested(ids))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Board)

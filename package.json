@@ -19,6 +19,7 @@
     "loopback": "^3.0.0",
     "loopback-boot": "^2.6.5",
     "loopback-component-explorer": "^4.0.0",
+    "loopback-context": "^3.3.0",
     "node-sass": "^4.6.1",
     "nodemon": "^1.12.1",
     "react": "^16.3.0",

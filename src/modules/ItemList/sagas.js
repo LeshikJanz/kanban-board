@@ -10,12 +10,13 @@ import { createItemList } from "api/itemList"
 import urls from "urls"
 import { fetchItemListsRequested } from "modules/Main/actions"
 
+
 export function* createItemListsSaga({ payload }): Iterator<Object | Task> {
   try {
     const { itemList, history } = payload
     const resultItemList = yield createItemList(itemList)
     yield put(fetchItemListsRequested())
-    history.push(urls.index)
+    yield history.push(urls.index)
     yield put(createItemListSucceded(resultItemList))
 
   } catch (error) {

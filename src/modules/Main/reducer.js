@@ -19,7 +19,7 @@ export default createReducer({
   [fetchItemListsSucceded().type]: (state, payload) => ({
     ...state,
     loading: false,
-    lists: payload
+    lists: payload.sort((list1, list2) => list1.order - list2.order)
   }),
   [fetchItemListsFailed().type]: (state, payload) => ({
     ...state,
