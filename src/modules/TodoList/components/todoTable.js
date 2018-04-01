@@ -1,6 +1,6 @@
 import React from 'react'
 import '../styles/table.scss'
-import { Link } from 'react-router'
+import { Link } from 'react-router-dom'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 const filterByPublicFields = (elem, i) => ({

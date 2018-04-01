@@ -22,7 +22,6 @@
     "nodemon": "^1.12.1",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
-    "react-router-redux": "^4.0.8",
     "serve-favicon": "^2.0.1",
     "strong-error-handler": "^1.0.1",
     "webpack": "^3.8.1"
@@ -49,7 +48,8 @@
     "postcss-loader": "^2.0.8",
     "react-beautiful-dnd": "^2.6.1",
     "react-redux": "^5.0.6",
-    "react-router": "3.2.0",
+    "react-router": "^3.2.0",
+    "react-router-dom": "^4.2.2",
     "recompose": "^0.26.0",
     "redux": "^3.7.2",
     "redux-form": "^7.0.1",

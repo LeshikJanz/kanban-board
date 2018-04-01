@@ -3,7 +3,7 @@ import { Item } from "types/item"
 
 export const fetchItemLists = () =>
   request
-    .get('itemLists', {})
+    .get('itemLists?filter={"include": "items"}', {})
     .then((items: Item[]) => items)
 
 export const fetchItemListById = (id: string) =>

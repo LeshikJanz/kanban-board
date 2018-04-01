@@ -1,31 +1,33 @@
 import 'babel-polyfill'
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import rootSaga from './modules/sagas'
 import reducer from '../reducers'
-import routes from './modules/routes'
 import 'app.scss'
-import { Router, hashHistory } from 'react-router'
-import { syncHistoryWithStore, routerMiddleware } from 'react-router-redux'
+import { syncHistoryWithStore } from 'react-router-redux'
 import thunk from 'redux-thunk'
 const sagaMiddleware = createSagaMiddleware()
+import Base from 'modules/Main/containers'
 
 const store = createStore(reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  applyMiddleware(sagaMiddleware, routerMiddleware(hashHistory), thunk)
+  applyMiddleware(sagaMiddleware, thunk)
 )
-
-const history = syncHistoryWithStore(hashHistory, store)
 
 sagaMiddleware.run(rootSaga)
 
 ReactDOM.render(
   <Provider store={store}>
     <div style={{ height: '100%' }}>
-      <Router history={history} routes={routes}/>
+      <Router>
+        <Switch>
+          <Route exact path='/' component={Base}/>
+        </Switch>
+      </Router>
     </div>
   </Provider>,
   document.getElementById('root')

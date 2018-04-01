@@ -12,8 +12,6 @@ import { fetchItemLists } from "api/itemList"
 export function* fetchItemListsSaga(): Iterator<Object | Task> {
   try {
     const itemLists = yield fetchItemLists()
-    console.log("itemLists")
-    console.log(itemLists)
     yield put(fetchItemListsSucceded(itemLists))
   } catch (error) {
     yield put(fetchItemListsFailed(error))

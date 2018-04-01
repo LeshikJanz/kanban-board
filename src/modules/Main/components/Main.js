@@ -3,9 +3,7 @@ import { Header } from "./Header"
 import Board from "modules/Board/Board"
 import Welcome from "./Welcome"
 import { authorQuoteMap, generateQuoteMap } from '../data'
-const styles = require('../styles/style.scss')
-const classNames = require('classnames/bind')
-const cx = classNames.bind(styles)
+import '../styles/style.scss'
 
 const data = {
   medium: generateQuoteMap(100),
@@ -39,14 +37,24 @@ const initialData = {
   ],
 }
 
-const Base = () => (
-  <div className="main-container">
-    <Header/>
-    {
-      !initialData && <Welcome/>
-    }
-    <Board initial={initialData}/>
-  </div>
-)
+const Base = ({ itemLists, loading }) => {
+  if (loading) {
+    return (
+      <div className="mainContainer">
+        <Header/>
+        <h1>Loading...</h1>
+      </div>
+    )
+  }
+
+  return (
+    <div className="mainContainer">
+      <Header/>
+      {
+        itemLists ? <Board initial={itemLists}/> : <Welcome/>
+      }
+    </div>
+  )
+}
 
 export default Base
