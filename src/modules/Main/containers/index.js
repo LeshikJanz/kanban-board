@@ -28,9 +28,7 @@ export default compose(
       ({
         ...result,
         [itemList.name]: itemList.items
-  }), {})
-})
-)
-)
+      }), {})
+  })))
 (Base)
 

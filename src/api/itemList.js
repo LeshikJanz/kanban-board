@@ -20,12 +20,12 @@ export const fetchItemListById = (id: string) =>
 
 export const updateItemList = (item: Item) =>
   request
-    .put('items', item)
+    .put('itemLists', item)
     .then((res: Item) => res)
 
-export const deleteItem = (id: string) =>
+export const deleteItemList = (id: string) =>
   request
-    .delete(`items/${id}`, {})
+    .delete(`itemLists/${id}`, {})
     .then((res: number) => res)
 
 export const updateItemsOrder = (ids: Object) =>

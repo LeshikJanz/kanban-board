@@ -15,6 +15,7 @@ import type {
 } from 'react-beautiful-dnd'
 
 const Wrapper = styled.div`
+  position: relative;
   background-color: ${({ isDraggingOver }) => (isDraggingOver ? colors.blue.lighter : colors.blue.light)};
   display: flex;
   flex-direction: column;
@@ -27,6 +28,7 @@ const Wrapper = styled.div`
 `
 
 const DropZone = styled.div`
+  position: relative;
   min-height: 250px;
   margin-bottom: ${grid}px;
 `
@@ -67,9 +69,6 @@ class InnerQuoteList extends Component<QuoteListProps> {
   }
 
   render() {
-    console.log("this.props.items")
-    console.log(this.props.items)
-
     return (
       <div>
         {this.props.items.map((item: Item, index: number) => (
