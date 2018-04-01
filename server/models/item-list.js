@@ -2,6 +2,20 @@
 
 module.exports = function (ItemList) {
 
+  ItemList.updateItemListsOrder = function (ids, cb) {
+    ItemList.find({}, function (err, items) {
+      items.forEach(function (t) {
+        t.order = ids.indexOf(ids.find(i => +i === +t.id))
+        ItemList.replaceOrCreate(t, function (err) {
+          if (err) {
+            console.log(err)
+          }
+        })
+      })
+      cb(null, true)
+    })
+  }
+
   ItemList.updateItemsOrder = function (listsIds, cb) {
     const Item = this.app.models.Item;
     // search by ItemList
@@ -37,6 +51,11 @@ module.exports = function (ItemList) {
       cb(null, true)
     })
   }
+
+  ItemList.remoteMethod('updateItemListsOrder', {
+    accepts: [{ arg: 'ids', type: 'array' }],
+    returns: { arg: 'ordered', type: 'boolean' }
+  })
 
   ItemList.remoteMethod('updateItemsOrder', {
     accepts: [{ arg: 'ids', type: 'object' }],

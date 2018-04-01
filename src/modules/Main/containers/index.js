@@ -23,13 +23,14 @@ export default compose(
     }
   }),
   withProps((props) => ({
-      itemLists: !!props.itemLists.length &&
-      props.itemLists.reduce((result, itemList) =>
-        ({
-          ...result,
-          [itemList.name]: itemList.items
-        }), {})
-    })
-  )
-)(Base)
+    itemLists: !!props.itemLists.length &&
+    props.itemLists.reduce((result, itemList) =>
+      ({
+        ...result,
+        [itemList.name]: itemList.items
+  }), {})
+})
+)
+)
+(Base)
 

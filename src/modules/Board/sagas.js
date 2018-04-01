@@ -3,9 +3,25 @@ import { Task } from "redux-saga"
 import {
   updateItemsOrderRequested,
   updateItemsOrderSucceded,
-  updateItemsOrderFailed
+  updateItemsOrderFailed,
+  updateItemListsOrderRequested,
+  updateItemListsOrderSucceded,
+  updateItemListsOrderFailed
 } from "./actions"
-import { updateItemsOrder } from "api/itemList"
+import { updateItemListsOrder, updateItemsOrder } from "api/itemList"
+
+export function* updateItemListsOrderSaga({ payload }): Iterator<Object | Task> {
+  try {
+    const { ordered } = yield updateItemListsOrder(payload)
+    if (!ordered) {
+      throw new Error("Ordering failed")
+    }
+
+    yield put(updateItemListsOrderSucceded(ordered))
+  } catch (error) {
+    yield put(updateItemListsOrderFailed(error))
+  }
+}
 
 export function* updateItemsOrderSaga({ payload }): Iterator<Object | Task> {
   try {
@@ -22,6 +38,7 @@ export function* updateItemsOrderSaga({ payload }): Iterator<Object | Task> {
 
 export function* boardSaga() {
   yield [
+    takeEvery(updateItemListsOrderRequested().type, updateItemListsOrderSaga),
     takeEvery(updateItemsOrderRequested().type, updateItemsOrderSaga),
   ]
 }

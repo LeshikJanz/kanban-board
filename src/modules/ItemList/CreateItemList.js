@@ -6,7 +6,6 @@ import { createItemListRequested } from "./actions"
 class CreateItemList extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault()
-    console.log("handleSubmit")
     this.props.createItemList(this.state, this.props.history)
   }
 
@@ -17,13 +16,18 @@ class CreateItemList extends React.Component {
 
   render() {
     const { name } = this.state
+
     return (
       <div className="createItemContainer">
         <h1>Create new ItemList</h1>
         <form className="createItemForm" onSubmit={this.handleSubmit}>
           <label>Name</label>
-          <input type="text" name="name" value={name} onChange={this.handleChange}/>
-          <button disabled={!name}>Create</button>
+          <input
+            type="text" name="name"
+            placeholder="*Should be a string"
+            value={name}
+            onChange={this.handleChange}/>
+          <button disabled={!isNaN(name)}>Create</button>
         </form>
       </div>
     )

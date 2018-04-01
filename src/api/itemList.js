@@ -28,7 +28,12 @@ export const deleteItem = (id: string) =>
     .delete(`items/${id}`, {})
     .then((res: number) => res)
 
-export const updateItemsOrder = (ids: string[]) =>
+export const updateItemsOrder = (ids: Object) =>
   request
     .post(`itemLists/updateItemsOrder`, { ids })
+    .then((res: boolean) => res)
+
+export const updateItemListsOrder = (ids: string[]) =>
+  request
+    .post(`itemLists/updateItemListsOrder`, { ids })
     .then((res: boolean) => res)

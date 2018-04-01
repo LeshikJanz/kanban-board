@@ -13,7 +13,7 @@ import reorder, { reorderQuoteMap } from './reorder'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 
 import type { QuoteMap } from '../types'
-import { updateItemsOrderRequested } from "./actions"
+import { updateItemsOrderRequested, updateItemListsOrderRequested } from "./actions"
 
 const ParentContainer = styled.div`
   height: ${({ height }) => height};
@@ -77,12 +77,11 @@ class Board extends Component<Props, State> {
       this.setState({
         ordered,
       }, () => {
-        const sortedIds = this.state.ordered.reduce((result, listName) => ({
-          ...result,
-          [listName]: this.state.columns[listName]
-        }), {})
-        console.log("sortedIds")
-        console.log(sortedIds)
+        const sortedItemLists = this.state.ordered.map(itemListName =>
+          this.props.itemLists.find(itemList => itemList.name === itemListName)
+        )
+        const sortedItemListsIds = sortedItemLists.map(itemList => itemList.id)
+        this.props.updateItemListsOrder(sortedItemListsIds)
       })
 
       return
@@ -156,6 +155,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
+  updateItemListsOrder: (ids: string[]) =>
+    dispatch(updateItemListsOrderRequested(ids)),
   updateItemsOrder: (ids: string[]) =>
     dispatch(updateItemsOrderRequested(ids))
 })
