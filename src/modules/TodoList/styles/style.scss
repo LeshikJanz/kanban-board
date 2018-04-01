@@ -1,0 +1,15 @@
+@import '../../../styles/variables';
+
+.welcome {
+  font-family: Montserrat-Bold;
+  margin: $LAPTOP_PADDING;
+  text-align: center;
+  padding: 50px 0;
+}
+
+.tableContainer {
+  background-color: #f5f8f9;
+  box-shadow: inset -0px -3px 3px 0 rgba(0, 0, 0, 0.04);
+  color: #7d858e;
+  padding: 69px 15% 94px;
+}

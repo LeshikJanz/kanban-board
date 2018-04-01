@@ -1,0 +1,26 @@
+{
+  "name": "itemList",
+  "plural": "itemLists",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "default": "Default"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "items": {
+      "type": "hasMany",
+      "model": "item",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

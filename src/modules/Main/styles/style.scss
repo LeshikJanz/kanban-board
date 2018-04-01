@@ -1,0 +1,50 @@
+@import "../../../styles/variables";
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  height: 76px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: $LAPTOP_PADDING;
+  background-color: #090321;
+  box-shadow: -3.5px 2px 38px 0 rgba(0, 0, 0, 0.28);
+
+  a {
+    display: flex;
+    height: 100%;
+    align-items: center;
+
+    img {
+      cursor: pointer;
+      height: 80%;
+      margin-bottom: 0;
+      opacity: 0.95;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .headerText {
+    font-family: Aldrich;
+    font-size: 16px;
+    color: #ffffff;
+  }
+}
+
+.navMenu {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+
+  > a {
+    cursor: pointer;
+    margin: 30px;
+
+    &.active {
+      color: #cf4868;
+    }
+  }
+}

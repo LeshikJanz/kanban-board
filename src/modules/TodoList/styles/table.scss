@@ -1,0 +1,94 @@
+.rowContainer {
+
+  &:first-child .row {
+    color: #404851 !important;
+    font-family: Montserrat-Bold;
+  }
+
+  &:first-child .row {
+    background: transparent;
+  }
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  background: #f5f8f9;
+  cursor: pointer;
+  width: 100%;
+
+  &:hover {
+    .tableActions button {
+      opacity: 1;
+    }
+
+    &:first-child {
+      cursor: auto;
+      background-color: transparent;
+
+      * {
+        color: black;
+      }
+    }
+
+    * {
+      color: white;
+    }
+  }
+
+  > div {
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    text-align: left;
+    height: 50px;
+    color: #000;
+    border-bottom: none;
+
+    &.disabled {
+      color: #7d858e;
+    }
+
+    &:first-child {
+      width: 5%;
+    }
+    &:nth-child(2) {
+      width: 25%;
+    }
+    &:nth-child(3) {
+      width: 50%;
+    }
+  }
+}
+
+.tableActions {
+  display: flex;
+  height: 100%;
+  width: 20%;
+  min-width: 150px;
+  text-align: right;
+  padding-right: 15px;
+
+  button {
+    cursor: pointer;
+    opacity: 0;
+    height: 60%;
+    color: black;
+    margin: 2px 0;
+
+    &:last-child {
+      margin-left: 20px;
+    }
+  }
+}
+
+.emptyTable {
+  text-align: center;
+}
+
+.actionButtons {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 30px;
+}
