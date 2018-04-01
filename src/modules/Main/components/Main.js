@@ -1,14 +1,7 @@
-import React from 'react'
-import { Header } from "./Header"
+import React, { Fragment } from 'react'
 import Board from "modules/Board/Board"
 import Welcome from "./Welcome"
-import { authorQuoteMap, generateQuoteMap } from '../data'
 import '../styles/style.scss'
-
-const data = {
-  medium: generateQuoteMap(100),
-  large: generateQuoteMap(500),
-};
 
 const initialData = {
   TODO: [
@@ -40,20 +33,16 @@ const initialData = {
 const Base = ({ itemLists, loading }) => {
   if (loading) {
     return (
-      <div className="mainContainer">
-        <Header/>
-        <h1>Loading...</h1>
-      </div>
+      <h1>Loading...</h1>
     )
   }
 
   return (
-    <div className="mainContainer">
-      <Header/>
+    <Fragment>
       {
         itemLists ? <Board initial={itemLists}/> : <Welcome/>
       }
-    </div>
+    </Fragment>
   )
 }
 

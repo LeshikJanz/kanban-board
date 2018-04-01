@@ -11,6 +11,11 @@ export const fetchItemById = (id: string) =>
     .get(`items/${id}`, {})
     .then((item: Item) => item)
 
+export const createItem = (itemListId: string, item: Item) =>
+  request
+    .post(`itemLists/${itemListId}/items`, item)
+    .then((item: Item) => item)
+
 export const updateItem = (item: Item) =>
   request
     .put('items', item)

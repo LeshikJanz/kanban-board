@@ -1,7 +1,12 @@
 /**
  * Object with router urls
  */
-export const urls = {
+const urls = {
   index: '/',
-  todo: 'todo'
+  auth: '/auth',
+  registration: '/registration',
+  list: '/list',
+  item: '/item'
 }
+
+export default urls

@@ -10,7 +10,6 @@ export function createAction(type: string, payloadMapper?: any) {
     }
   }
 
-  actionCreator.toString = () => name
   actionCreator.bind({ displayName: name })
 
   return actionCreator

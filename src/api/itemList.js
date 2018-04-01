@@ -1,3 +1,5 @@
+// @flow
+import type { ItemList } from "types/itemList"
 import { request } from "./base"
 import { Item } from "types/item"
 
@@ -5,6 +7,11 @@ export const fetchItemLists = () =>
   request
     .get('itemLists?filter={"include": "items"}', {})
     .then((items: Item[]) => items)
+
+export const createItemList = (itemList: ItemList) =>
+  request
+    .post('itemLists', itemList)
+    .then((itemList: ItemList) => itemList)
 
 export const fetchItemListById = (id: string) =>
   request

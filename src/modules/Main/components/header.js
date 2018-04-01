@@ -1,19 +1,26 @@
 import React from 'react'
 import '../styles/style.scss'
 import { Link } from 'react-router-dom'
-import { urls } from "../../../urls"
+import urls from "urls"
 
-export const Header = () => (
+const Header = () => (
   <div className="headerContainer">
     <div className="actions">
-      <Link to={urls.todo}>
+      <Link to={urls.list}>
         <img src="assets/icons/new-group.png"/>
       </Link>
-      <Link to={urls.todo}>
+      <Link to={urls.item}>
         <img src="assets/icons/new-item.png"/>
       </Link>
     </div>
-    <div className="headerText">Kanban board implemented by Alex Tereshko</div>
-    <h1 className="login">Login, Registration</h1>
+    <Link to={urls.index}>
+      <div className="headerText">Kanban board implemented by Alex Tereshko</div>
+    </Link>
+    <div className="authButtons">
+      <button>Login</button>
+      <button>Registration</button>
+    </div>
   </div>
 )
+
+export default Header

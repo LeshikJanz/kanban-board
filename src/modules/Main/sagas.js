@@ -18,7 +18,7 @@ export function* fetchItemListsSaga(): Iterator<Object | Task> {
   }
 }
 
-export function* itemListSaga() {
+export function* mainSaga() {
   yield [
     takeEvery(fetchItemListsRequested().type, fetchItemListsSaga),
   ]

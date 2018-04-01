@@ -1,0 +1,14 @@
+.createItemContainer {
+  margin: 5%;
+}
+
+.createItemForm {
+  display: flex;
+  max-width: 200px;
+  justify-content: center;
+  flex-direction: column;
+
+  * {
+    margin: 10px 15px;
+  }
+}

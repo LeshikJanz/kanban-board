@@ -1,4 +1,5 @@
 @import "fonts";
+@import "variables";
 
 body, html, #root {
   margin: 0;
@@ -9,4 +10,32 @@ div, hr, a, img, input, span, button, p {
   font-family: Montserrat;
   color: #000;
   font-size: 16px;
+}
+
+label, h1 {
+  color: #fff;
+}
+
+button {
+  cursor: pointer;
+  padding: 5px 10px;
+  color: white;
+  border-radius: 6px;
+  border-color: transparent;
+  background-color: $PRIMARY_COLOR;
+
+  &:hover {
+    transition: .3s all;
+    background-color: $PRIMARY_HOVER_COLOR;
+  }
+
+  &:active {
+    transition: .3s all;
+    background-color: $PRIMARY_ACTIVE_COLOR;
+  }
+
+  &:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+  }
 }
