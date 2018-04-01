@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import "./styles.scss"
 import { fetchItemRequested } from "./actions"
 import { fetchItemListsRequested } from "../Main/actions"
-import { updateItemRequested } from "./actions"
+import { updateItemRequested, deleteItemRequested } from "./actions"
 
 class CreateItem extends React.Component {
   state = {
@@ -29,6 +29,9 @@ class CreateItem extends React.Component {
     e.preventDefault()
     this.props.updateItem(this.state, this.props.history)
   }
+
+  handleDeleteItem = () =>
+    this.props.deleteItem(this.state, this.props.history)
 
   handleChange = ({ target }) =>
     this.setState({ [target.name]: target.value })
@@ -66,7 +69,7 @@ class CreateItem extends React.Component {
             <button className="create" disabled={!(isNaN(title) && description && itemListId)}>
               Update
             </button>
-            <button className="delete">
+            <button type="button" onClick={this.handleDeleteItem} className="delete">
               Delete
             </button>
           </div>
@@ -86,6 +89,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(fetchItemRequested(itemId)),
   updateItem: (item, history) =>
     dispatch(updateItemRequested({ item, history })),
+  deleteItem: (item, history) =>
+    dispatch(deleteItemRequested({ item, history })),
   fetchItemLists: () =>
     dispatch(fetchItemListsRequested())
 })

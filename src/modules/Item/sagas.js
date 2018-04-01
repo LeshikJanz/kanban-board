@@ -12,11 +12,14 @@ import {
 import { createItem } from "api/item"
 import urls from "urls"
 import { fetchItemListsRequested } from "modules/Main/actions"
-import { fetchItemById, updateItem } from "api/item"
+import { fetchItemById, updateItem, deleteItem } from "api/item"
 import {
   updateItemRequested,
   updateItemSucceded,
-  updateItemFailed
+  updateItemFailed,
+  deleteItemRequested,
+  deleteItemSucceded,
+  deleteItemFailed,
 } from "./actions"
 
 export function* createItemSaga({ payload }): Iterator<Object | Task> {
@@ -51,11 +54,23 @@ export function* updateItemSaga({ payload }): Iterator<Object | Task> {
   }
 }
 
+export function* deleteItemSaga({ payload }): Iterator<Object | Task> {
+  try {
+    const { item, history } = payload
+    const result = yield deleteItem(item.id)
+    history.push(urls.index)
+    yield put(deleteItemSucceded(result))
+  } catch (error) {
+    yield put(deleteItemFailed(error))
+  }
+}
+
 export function* itemSaga() {
   yield [
     takeEvery(createItemRequested().type, createItemSaga),
     takeEvery(fetchItemRequested().type, fetchItemSaga),
     takeEvery(updateItemRequested().type, updateItemSaga),
+    takeEvery(deleteItemRequested().type, deleteItemSaga),
   ]
 }
 

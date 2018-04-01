@@ -11,3 +11,7 @@ export const fetchItemFailed = createAction('FETCH_ITEM_FAILED')
 export const updateItemRequested = createAction('UPDATE_ITEM_REQUESTED')
 export const updateItemSucceded = createAction('UPDATE_ITEM_SUCCEDED')
 export const updateItemFailed = createAction('UPDATE_ITEM_FAILED')
+
+export const deleteItemRequested = createAction('DELETE_ITEM_REQUESTED')
+export const deleteItemSucceded = createAction('DELETE_ITEM_SUCCEDED')
+export const deleteItemFailed = createAction('DELETE_ITEM_FAILED')
