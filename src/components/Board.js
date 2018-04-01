@@ -15,16 +15,16 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import type { QuoteMap } from '../types'
 
 const ParentContainer = styled.div`
-  height: ${({ height }) => height}
-  overflow-x: hidden
-  overflow-y: auto
+  height: ${({ height }) => height};
+  overflow-x: hidden;
+  overflow-y: auto;
 `
 
 const Container = styled.div`
-  min-height: 100vh
-  /* like display:flex but will allow bleeding over the window width */
-  min-width: 100vw
-  display: inline-flex
+  margin-top: 30px;
+  min-height: 100vh;
+  min-width: 100vw;
+  display: inline-flex;
 `
 
 type Props = {
@@ -39,8 +39,6 @@ type State = {
 }
 
 export default class Board extends Component<Props, State> {
-  /* eslint-disable react/sort-comp */
-
   state: State = {
     columns: this.props.initial,
     ordered: Object.keys(this.props.initial),

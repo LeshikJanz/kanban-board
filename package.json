@@ -1,11 +1,12 @@
 {
-  "name": "todo-list",
+  "name": "kanban-board",
   "author": "Alex Tereshko",
   "version": "1.0.0",
   "main": "server/server.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development nodemon server/server.js --watch server --watch --content-base src/",
-    "prod": "cross-env NODE_ENV=production node server/server.js"
+    "prod": "cross-env NODE_ENV=production node server/server.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js --color -p"
   },
   "dependencies": {
     "babel-core": "^6.26.0",
@@ -19,8 +20,8 @@
     "loopback-component-explorer": "^4.0.0",
     "node-sass": "^4.6.1",
     "nodemon": "^1.12.1",
-    "react": "^16.1.1",
-    "react-dom": "^16.1.1",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
     "react-router-redux": "^4.0.8",
     "serve-favicon": "^2.0.1",
     "strong-error-handler": "^1.0.1",
@@ -65,5 +66,5 @@
     "url": ""
   },
   "license": "UNLICENSED",
-  "description": "todo-list"
+  "description": "test task for Omega-R"
 }

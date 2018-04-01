@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
-import { Base } from "../components/index"
+import Base from "../components/index"
 import { changeListType } from "../../actions"
 
 const mapStateToProps: any = (state): any => ({
@@ -12,7 +12,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(changeListType(target.innerText.toLowerCase()))
   },
   backToMainPage: (pathname) => {
-    if ( pathname !== '/' ) {
+    if (pathname !== '/') {
       dispatch(push('/'))
     }
   },

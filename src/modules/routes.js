@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route } from 'react-router'
 import { urls } from "urls"
-import { PageNotFound } from './Main/components/pageNotFount'
+import { PageNotFound } from './Main/components/PageNotFount'
 import Base from './Main/containers/index'
 import { TodoList } from './TodoList/components/index'
 import Todo from './Todo/containers/index'
