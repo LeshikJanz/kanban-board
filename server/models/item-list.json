@@ -11,6 +11,9 @@
       "type": "string",
       "required": true,
       "default": "Default"
+    },
+    "order": {
+      "type": "number"
     }
   },
   "validations": [],

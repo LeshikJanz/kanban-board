@@ -72,7 +72,6 @@ export default class QuoteItem extends React.PureComponent<Props> {
       return
     }
 
-    // eslint-disable-next-line react/no-find-dom-node
     const node: HTMLElement = (ReactDOM.findDOMNode(this) : any)
     node.focus()
   }
@@ -90,12 +89,10 @@ export default class QuoteItem extends React.PureComponent<Props> {
         {...provided.draggableProps}
         {...provided.dragHandleProps}
       >
-        <div>
-          <Content>
-            <BlockQuote>{item.description}</BlockQuote>
-            <Attribution>{item.title}</Attribution>
-          </Content>
-        </div>
+        <Content>
+          <BlockQuote>{item.description}</BlockQuote>
+          <Attribution>{item.title}</Attribution>
+        </Content>
       </Container>
     )
   }

@@ -25,17 +25,17 @@ const getItemStyle = (draggableStyle, isDragging) => ({
 })
 
 export const TodoTable = ({
-                            todoList,
-                            loading,
-                            gotoTodo,
-                            isFinishedList,
-                            handleFinish,
-                            handleDelete,
-                            updateTodosOrder
-                          }) => {
+  todoList,
+  loading,
+  gotoTodo,
+  isFinishedList,
+  handleFinish,
+  handleDelete,
+  updateTodosOrder
+}) => {
 
   const onDragEnd = (result) => {
-    if ( !result.destination ) {
+    if (!result.destination) {
       return
     }
 
@@ -77,7 +77,7 @@ export const TodoTable = ({
                                  provided.draggableStyle,
                                  snapshot.isDragging
                                )}
-                               {...provided.dragHandleProps}>
+                            {...provided.dragHandleProps}>
                             {
                               Object.values(filterByPublicFields(l, i))
                                 .map((o, i) => <div onClick={() => gotoTodo(l.id)} key={i}>{o}</div>)

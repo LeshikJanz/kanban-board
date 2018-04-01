@@ -1,25 +1,25 @@
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import Base from "../components/index"
-import { changeListType } from "../../actions"
+import { compose, lifecycle, withState, withHandlers, withProps } from 'recompose'
+import { fetchItemListsRequested } from "../actions"
 
 const mapStateToProps: any = (state): any => ({
   menuType: state.Todos.type
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  handleMenu: ({ target }) => {
-    dispatch(changeListType(target.innerText.toLowerCase()))
-  },
-  backToMainPage: (pathname) => {
-    if (pathname !== '/') {
-      dispatch(push('/'))
-    }
+  fetchItemLists: () => {
+    dispatch(fetchItemListsRequested())
   },
 })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  lifecycle({
+    componentDidMount() {
+      this.props.fetchItemLists()
+    }
+  })
 )(Base)
 

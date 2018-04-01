@@ -1,6 +1,6 @@
 // @flow
 import type { Quote } from '../types'
-import { Item } from "types/item"
+import type { Item } from "types/item"
 import type { DraggableProvided, DraggableStateSnapshot } from 'react-beautiful-dnd'
 import React, { Component } from 'react'
 import styled from 'styled-components'

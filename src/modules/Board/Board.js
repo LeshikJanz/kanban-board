@@ -7,7 +7,7 @@ import type {
 } from 'react-beautiful-dnd'
 import React, { Component } from 'react'
 import styled, { injectGlobal } from 'styled-components'
-import Column from './column'
+import Column from './Column'
 import { colors } from './constants'
 import reorder, { reorderQuoteMap } from './reorder'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
@@ -71,13 +71,11 @@ export default class Board extends Component<Props, State> {
     const source: DraggableLocation = result.source
     const destination: DraggableLocation = result.destination
 
-    // did not move anywhere - can bail early
     if (source.droppableId === destination.droppableId &&
       source.index === destination.index) {
       return
     }
 
-    // reordering column
     if (result.type === 'COLUMN') {
       const ordered: string[] = reorder(
         this.state.ordered,

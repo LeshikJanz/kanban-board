@@ -1,6 +1,6 @@
 import React from 'react'
 import { Header } from "./Header"
-import Board from "components/Board"
+import Board from "modules/Board/Board"
 import Welcome from "./Welcome"
 import { authorQuoteMap, generateQuoteMap } from '../data'
 const styles = require('../styles/style.scss')
@@ -39,20 +39,14 @@ const initialData = {
   ],
 }
 
-class Base extends React.Component {
-  render() {
-    const { menuType, handleMenu, backToMainPage, children, location } = this.props
-
-    return (
-      <div className="main-container">
-        <Header/>
-        {
-          !initialData && <Welcome/>
-        }
-        <Board initial={initialData}/>
-      </div>
-    )
-  }
-}
+const Base = () => (
+  <div className="main-container">
+    <Header/>
+    {
+      !initialData && <Welcome/>
+    }
+    <Board initial={initialData}/>
+  </div>
+)
 
 export default Base

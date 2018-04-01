@@ -67,6 +67,9 @@ class InnerQuoteList extends Component<QuoteListProps> {
   }
 
   render() {
+    console.log("this.props.items")
+    console.log(this.props.items)
+
     return (
       <div>
         {this.props.items.map((item: Item, index: number) => (
@@ -103,9 +106,6 @@ class InnerList extends Component<InnerListProps> {
     const title = this.props.title ? (
       <Title>{this.props.title}</Title>
     ) : null
-
-    console.log("items")
-    console.log(items)
 
     return (
       <Container>

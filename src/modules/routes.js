@@ -2,9 +2,9 @@ import React from 'react'
 import { Route } from 'react-router'
 import { urls } from "urls"
 import { PageNotFound } from './Main/components/PageNotFount'
-import Base from './Main/containers/index'
-import { TodoList } from './TodoList/components/index'
-import Todo from './Todo/containers/index'
+import Base from './Main/containers'
+import { TodoList } from './TodoList/components'
+import Todo from './Todo/containers'
 
 export default (
   <Route component={Base}>

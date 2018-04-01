@@ -3,12 +3,12 @@ import { Item } from "types/item"
 
 export const fetchItemLists = () =>
   request
-    .get('items', {})
+    .get('itemLists', {})
     .then((items: Item[]) => items)
 
 export const fetchItemListById = (id: string) =>
   request
-    .get(`items/${id}`, {})
+    .get(`itemLists/${id}`, {})
     .then((item: Item) => item)
 
 export const updateItemList = (item: Item) =>
