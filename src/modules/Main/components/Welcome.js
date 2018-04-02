@@ -12,7 +12,9 @@ const Welcome = () => (
           There is no one Board List. Tap to the New Button at the top left corner for starting your experience.
         </h2>
       ) : (
-        <h2>Register your account first or log in if you have one</h2>
+        <h2 className="emptyBoardTitle">
+          Register your account first or log in if you have one
+        </h2>
       )
     }
   </div>

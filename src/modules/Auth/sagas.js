@@ -13,6 +13,7 @@ import {
   logoutFailed
 } from "./actions"
 import { register, login, logout } from "api/auth"
+import { fetchItemListsSucceded } from "../Main/actions"
 
 export function* registrationSaga({ payload }): Iterator<Object | Task> {
   try {
@@ -48,6 +49,7 @@ export function* logoutSaga({ payload }): Iterator<Object | Task> {
     localStorage.removeItem('email')
     history.push(urls.index)
     yield put(logoutSucceded())
+    yield put(fetchItemListsSucceded([]))
   } catch (error) {
     yield put(logoutFailed(error))
   }
