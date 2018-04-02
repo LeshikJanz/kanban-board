@@ -2,6 +2,7 @@ import React from 'react'
 import '../styles/style.scss'
 import { Link } from 'react-router-dom'
 import urls from "urls"
+import LoggedUser from "./LoggedUser"
 
 const Header = () => (
   <div className="headerContainer">
@@ -16,10 +17,18 @@ const Header = () => (
     <Link to={urls.index}>
       <div className="headerText">Kanban board implemented by Alex Tereshko</div>
     </Link>
-    <div className="authButtons">
-      <button>Login</button>
-      <button>Registration</button>
-    </div>
+    {localStorage.getItem("email") ? <LoggedUser/>
+      : (
+      <div className="authButtons">
+        <Link to={urls.login}>
+          <button>Login</button>
+        </Link>
+        <Link to={urls.register}>
+          <button>Registration</button>
+        </Link>
+      </div>
+    )
+    }
   </div>
 )
 

@@ -66,7 +66,7 @@ class CreateItem extends React.Component {
             }
           </select>
           <div className="editActions">
-            <button className="create" disabled={!(isNaN(title) && description && itemListId)}>
+            <button className="primary" disabled={!(isNaN(title) && description && itemListId)}>
               Update
             </button>
             <button type="button" onClick={this.handleDeleteItem} className="delete">

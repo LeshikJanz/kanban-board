@@ -54,7 +54,7 @@ class CreateItem extends React.Component {
               )
             }
           </select>
-          <button className="create" disabled={!(isNaN(title) && description && itemListId)}>
+          <button className="primary" disabled={!(isNaN(title) && description && itemListId)}>
             Create
           </button>
         </form>

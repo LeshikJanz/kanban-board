@@ -45,7 +45,7 @@ class EditItemList extends React.Component {
             value={name}
             onChange={this.handleChange}/>
           <div className="editActions">
-            <button className="create" disabled={!isNaN(name)}>Update</button>
+            <button className="primary" disabled={!isNaN(name)}>Update</button>
             <button type="button" onClick={this.handleDeleteItemList} className="delete">
               Delete
             </button>

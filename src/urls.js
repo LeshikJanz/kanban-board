@@ -3,10 +3,11 @@
  */
 const urls = {
   index: '/',
-  auth: '/auth',
+  register: '/register',
+  login: '/login',
   registration: '/registration',
   list: '/list',
-  item: '/item'
+  item: '/item',
 }
 
 export default urls
