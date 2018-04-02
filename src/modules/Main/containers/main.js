@@ -1,7 +1,6 @@
 import { connect } from 'react-redux'
-import { push } from 'react-router-redux'
-import Base from "../components/Main"
-import { compose, lifecycle, withState, withHandlers, withProps } from 'recompose'
+import Main from "../components/Main"
+import { compose, lifecycle, withProps } from 'recompose'
 import { fetchItemListsRequested } from "../actions"
 
 const mapStateToProps = state => ({
@@ -24,11 +23,10 @@ export default compose(
   }),
   withProps((props) => ({
     itemLists: !!props.itemLists.length &&
-    props.itemLists.reduce((result, itemList) =>
-      ({
-        ...result,
-        [itemList.name]: itemList.items
-      }), {})
+    props.itemLists.reduce((result, itemList) => ({
+      ...result,
+      [itemList.name]: itemList.items
+    }), {})
   })))
-(Base)
+(Main)
 

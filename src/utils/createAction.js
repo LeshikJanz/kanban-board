@@ -1,7 +1,7 @@
 // @flow
 
 export function createAction(type: string, payloadMapper?: any) {
-  const name = `todo/${type}`
+  const name = `board/${type}`
 
   function actionCreator(...args: any[]) {
     return {

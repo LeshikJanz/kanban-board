@@ -12,7 +12,7 @@ import thunk from 'redux-thunk'
 const sagaMiddleware = createSagaMiddleware()
 import Header from "modules/Main/components/Header"
 import Wrapper from "modules/Main/components/Wrapper"
-import Base from 'modules/Main/containers'
+import Main from 'modules/Main/containers/main'
 import urls from './urls'
 import CreateItemList from "./modules/ItemList/CreateItemList"
 import CreateItem from "./modules/Item/CreateItem"
@@ -34,7 +34,7 @@ ReactDOM.render(
       <Switch>
         <Wrapper>
           <Header/>
-          <Route exact path={urls.index} component={Base}/>
+          <Route exact path={urls.index} component={Main}/>
           <Route exact path={urls.login} component={Login}/>
           <Route exact path={urls.register} component={Registration}/>
           <Route exact path={urls.list} component={CreateItemList}/>

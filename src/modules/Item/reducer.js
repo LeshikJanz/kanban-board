@@ -1,5 +1,4 @@
 import { createReducer } from 'utils/createReducer'
-import { changeListType, fetchTodosDone, fetchTodosInit, updateOrderAction, updateTodoDone } from "./actions"
 import {
   fetchItemSucceded,
   fetchItemFailed,

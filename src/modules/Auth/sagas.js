@@ -1,6 +1,5 @@
 import { put, takeEvery } from 'redux-saga/effects'
 import { Task } from "redux-saga"
-import { push } from "react-router-redux"
 import urls from "urls"
 import {
   registrationRequested,
@@ -42,8 +41,6 @@ export function* loginSaga({ payload }): Iterator<Object | Task> {
 
 export function* logoutSaga({ payload }): Iterator<Object | Task> {
   try {
-    console.log("payload")
-    console.log(payload)
     const { history } = payload
     yield logout()
     localStorage.removeItem('Token')

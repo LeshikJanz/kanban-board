@@ -1,7 +1,5 @@
 import { put, takeEvery } from 'redux-saga/effects'
 import { Task } from "redux-saga"
-import { deleteTodo, fetchTodos, updateTodo, updateOrder } from "../../api/item"
-import { push } from "react-router-redux"
 import {
   fetchItemListsRequested,
   fetchItemListsSucceded,

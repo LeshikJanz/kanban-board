@@ -56,7 +56,7 @@ class CreateItem extends React.Component {
           <textarea type="text" rows="10" name="description" value={description} onChange={this.handleChange}/>
           <label>Item List</label>
           <select value={itemListId} onChange={this.handleSelect}>
-            <option value="">Select ItemList</option>
+            <option value="">Select Item List</option>
             {
               this.props.itemLists.map(itemList =>
                 <option key={itemList.id} name="itemListId" value={itemList.id}>

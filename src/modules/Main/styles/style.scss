@@ -85,3 +85,15 @@
     margin: 0 10px;
   }
 }
+
+.loggedContainer {
+  display: flex;
+  color: #fff;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+
+  button {
+    margin-top: 10px;
+  }
+}

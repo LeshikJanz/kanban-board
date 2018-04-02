@@ -3,7 +3,7 @@ import Board from "modules/Board/Board"
 import Welcome from "./Welcome"
 import '../styles/style.scss'
 
-const Base = ({ itemLists, loading }) => {
+const Main = ({ itemLists, loading }) => {
   if (loading) {
     return (
       <h1>Loading...</h1>
@@ -19,4 +19,4 @@ const Base = ({ itemLists, loading }) => {
   )
 }
 
-export default Base
+export default Main
