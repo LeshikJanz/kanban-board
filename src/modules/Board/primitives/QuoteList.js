@@ -4,9 +4,9 @@ import { Item } from "types/item"
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Droppable, Draggable } from 'react-beautiful-dnd'
-import QuoteItem from './quote-item'
+import QuoteItem from './QuoteItem'
 import { grid, colors } from '../constants'
-import Title from './title'
+import Title from './Title'
 import type {
   DroppableProvided,
   DroppableStateSnapshot,

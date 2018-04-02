@@ -12,7 +12,6 @@ import { connect } from 'react-redux'
 import reorder, { reorderQuoteMap } from './reorder'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 
-import type { QuoteMap } from '../types'
 import { updateItemsOrderRequested, updateItemListsOrderRequested } from "./actions"
 
 const ParentContainer = styled.div`
@@ -29,7 +28,6 @@ const Container = styled.div`
 `
 
 type Props = {
-  initial: QuoteMap,
   containerHeight?: string,
 }
 
@@ -45,8 +43,6 @@ class Board extends Component<Props, State> {
     ordered: Object.keys(this.props.initial),
     autoFocusQuoteId: null,
   }
-
-  boardRef: ?HTMLElement
 
   onDragStart = (initial: DragStart) => {
     this.setState({

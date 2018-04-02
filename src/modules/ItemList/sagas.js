@@ -17,14 +17,12 @@ import {
 } from "./actions"
 import { createItemList } from "api/itemList"
 import urls from "urls"
-import { fetchItemListsRequested } from "modules/Main/actions"
 import { fetchItemListById, updateItemList, deleteItemList } from "api/itemList"
 
 export function* createItemListsSaga({ payload }): Iterator<Object | Task> {
   try {
     const { itemList, history } = payload
     const resultItemList = yield createItemList(itemList)
-    yield put(fetchItemListsRequested())
     yield history.push(urls.index)
     yield put(createItemListSucceded(resultItemList))
 

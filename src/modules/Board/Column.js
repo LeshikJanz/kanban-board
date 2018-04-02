@@ -1,15 +1,14 @@
 // @flow
 import { connect } from "react-redux"
 import { Link } from "react-router-dom"
-import type { Quote } from '../types'
 import type { Item } from "types/item"
 import type { DraggableProvided, DraggableStateSnapshot } from 'react-beautiful-dnd'
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { grid, colors, borderRadius } from './constants'
 import { Draggable } from 'react-beautiful-dnd'
-import QuoteList from './primatives/quote-list'
-import Title from './primatives/title'
+import QuoteList from './primitives/QuoteList'
+import Title from './primitives/Title'
 import urls from 'urls'
 
 const Wrapper = styled.div`
@@ -51,7 +50,6 @@ const Edit = styled(Link)`
 
 type Props = {|
   title: string,
-  quotes: Quote[],
   index: number,
   autoFocusQuoteId: ?string,
   |}

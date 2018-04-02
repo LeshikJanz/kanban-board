@@ -31,6 +31,7 @@ export function* loginSaga({ payload }): Iterator<Object | Task> {
     const { user, history } = payload
     const loggedUser = yield login(user)
     localStorage.setItem('Token', loggedUser.id)
+    localStorage.setItem('userId', loggedUser.userId)
     localStorage.setItem('email', user.email)
     history.push(urls.index)
     yield put(loginSucceded(loggedUser))
@@ -46,12 +47,11 @@ export function* logoutSaga({ payload }): Iterator<Object | Task> {
     const { history } = payload
     yield logout()
     localStorage.removeItem('Token')
+    localStorage.removeItem('userId')
     localStorage.removeItem('email')
     history.push(urls.index)
     yield put(logoutSucceded())
   } catch (error) {
-    console.log("error")
-    console.log(error)
     yield put(logoutFailed(error))
   }
 }

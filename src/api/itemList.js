@@ -5,12 +5,12 @@ import { Item } from "types/item"
 
 export const fetchItemLists = () =>
   request
-    .get('itemLists?filter={"include": "items"}', {})
+    .get(`itemLists?filter={"where": { "accountId": ${localStorage.getItem('userId')} },"include": "items"}`, {})
     .then((items: Item[]) => items)
 
 export const createItemList = (itemList: ItemList) =>
   request
-    .post('itemLists', itemList)
+    .post('itemLists', { ...itemList, "accountId": localStorage.getItem("userId") })
     .then((itemList: ItemList) => itemList)
 
 export const fetchItemListById = (id: string) =>
@@ -18,9 +18,9 @@ export const fetchItemListById = (id: string) =>
     .get(`itemLists/${id}`, {})
     .then((item: Item) => item)
 
-export const updateItemList = (item: Item) =>
+export const updateItemList = (itemList: ItemList) =>
   request
-    .put('itemLists', item)
+    .put('itemLists', { ...itemList, "accountId": localStorage.getItem("userId") })
     .then((res: Item) => res)
 
 export const deleteItemList = (id: string) =>
